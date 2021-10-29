@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import model.Brand;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
@@ -41,13 +40,10 @@ public class AdRepostiroty implements AutoCloseable {
     }
 
     public Collection<Post> findForDay() {
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.DATE, -1);
         List<Post> list = new ArrayList<>();
         try {
-            list = et(session -> session.createQuery("SELECT a FROM Post a "
-                    + "WHERE a.created BETWEEN :date AND current_timestamp ", Post.class)
-                    .setParameter("date", c.getTime())
+            list = et(session -> session.createQuery("SELECT * FROM Post"
+                   + " WHERE created >= now() - '1 day'::interval")
                     .list());
         } catch (Exception e) {
             LOG.error("Don't find post to last day");
