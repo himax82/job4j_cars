@@ -11,7 +11,6 @@ public class Body {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = true)
     private String name;
 
     public Body of(String name) {
@@ -51,5 +50,10 @@ public class Body {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Body{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

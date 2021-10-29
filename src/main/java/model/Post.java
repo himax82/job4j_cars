@@ -30,6 +30,8 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    private boolean photo;
+
     public static Post of(String description, boolean sale, Brand brand,
                         Body body, User user) {
         Post post = new Post();
@@ -66,7 +68,7 @@ public class Post {
         this.created = created;
     }
 
-    public boolean isSold() {
+    public boolean isSale() {
         return sale;
     }
 
@@ -82,7 +84,7 @@ public class Post {
         this.brand = brand;
     }
 
-    public Body getBodyType() {
+    public Body getBody() {
         return body;
     }
 
@@ -96,6 +98,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(boolean photo) {
+        this.photo = photo;
     }
 
     @Override
@@ -113,5 +123,14 @@ public class Post {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" + "id=" + id
+                + ", description='" + description + '\''
+                + ", created=" + created + ", sale=" + sale + " + photo =" + photo
+                + ", brand=" + brand + ", body=" + body
+                + ", user=" + user + '}';
     }
 }
