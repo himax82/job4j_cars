@@ -19,6 +19,9 @@ public class Body {
         return body;
     }
 
+    public Body() {
+    }
+
     public int getId() {
         return id;
     }

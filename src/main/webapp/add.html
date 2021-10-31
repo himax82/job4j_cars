@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="add.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <h1>Новое объявление</h1>
+    <form id="addPost" method="post">
+        <div class="form-group">
+            <label for="brand" >Марка:</label>
+                <select class="form-control" name="brand" id="brand">
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="body" >Кузов:</label>
+            <select class="form-control" name="body" id="body">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Описание машины</label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Напишите про характеристики вашей машины"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Цена</label>
+            <input class="form-control" id="price" placeholder="в рублях">
+        </div>
+        <button id="add" class="btn btn-primary" onclick="validate()">Добавить объявление</button>
+    </form>
+    <div class="col pb-2">
+        <div class="form-row">
+            <img src="/cars/download.do" class="rounded float-left d-block form-group" width="360px" height="240px">
+        </div>
+    </div>
+    <form action="/cars/upload.do" id="uploadImage" method="post" enctype="multipart/form-data">
+        <div class="checkbox">
+            <input type="file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Загрузить фото</button>
+    </form>
+    <div id="done" style="color:green; font-weight: bold; margin: 30px 0;"></div>
+</div>
+</body>
+</html>

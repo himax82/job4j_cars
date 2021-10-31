@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -8,32 +10,43 @@ import java.util.Objects;
 @Table(name = "posts")
 public class Post {
 
+    @JsonProperty
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JsonProperty
     private String description;
 
+    @JsonProperty
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
+    @JsonProperty
     private boolean sale;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonProperty
+    @ManyToOne(cascade = CascadeType.ALL)
     private Brand brand;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @JsonProperty
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "body_id", nullable = false)
     private Body body;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonProperty
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonProperty
     private boolean photo;
 
+    @JsonProperty
+    private int price;
+
     public static Post of(String description, boolean sale, Brand brand,
-                        Body body, User user) {
+                        Body body, User user, int price) {
         Post post = new Post();
         post.setDescription(description);
         post.setCreated(new Date(System.currentTimeMillis()));
@@ -41,6 +54,7 @@ public class Post {
         post.setBrand(brand);
         post.setBody(body);
         post.setUser(user);
+        post.setPrice(price);
         return post;
     }
 
@@ -108,6 +122,14 @@ public class Post {
         this.photo = photo;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -130,7 +152,7 @@ public class Post {
         return "Post{" + "id=" + id
                 + ", description='" + description + '\''
                 + ", created=" + created + ", sale=" + sale + " + photo =" + photo
-                + ", brand=" + brand + ", body=" + body
+                + ", brand=" + brand + ", body=" + body + ", price" + price
                 + ", user=" + user + '}';
     }
 }

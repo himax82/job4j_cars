@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="index.js"></script>
+
+    <title>Продажа Автомобителй</title>
+</head>
+<body>
+<section id="section0" class="header">
+    <div class="container">
+        <div class="headerInner">
+            <div class="row mt-30">
+                <h2 style="text-indent: 100px">Приветствую вас на нашем сервисе по продажам автомобилей!</h2>
+                <div class="col-md-4 col-sm-6">
+                    <form>
+                        <div id="invalid" style="color:red; font-weight: bold; margin: 30px 0;"></div>
+                        <input type="email" id="email" placeholder="Ваш Email:">
+                        <button type="button" class="btn btn-primary"
+                                onclick="window.location.href='reg.html'">Зарегистироватся</button>
+                        <input type="tel" id="password" placeholder="Ваш пароль:">
+                        <button type="button" class="btn btn-primary" onclick="validate()">Войти</button>
+                        <li class="nav-item">
+                            <a class="nav-link" id="user" href="logout.do"></a>
+                        </li>
+                        <button type="button" class="btn btn-primary"
+                                onclick="window.location.href='add.html'">Добавить объявление</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container-md">
+    <div class="card border">
+        <div class="card-header">
+            <ul class="nav">
+
+            </ul>
+        </div>
+            <table class="table border-light table-hover table-striped">
+                <thead class="table-light">
+                <tr>
+                    <th>Фото</th>
+                    <th>Марка</th>
+                    <th>Кузов</th>
+                    <th>Объявление</th>
+                    <th>Цена</th>
+                    <th>Актуально/продано</th>
+                </tr>
+                </thead>
+                <tbody id="table">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
