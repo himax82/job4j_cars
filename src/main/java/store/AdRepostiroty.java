@@ -49,7 +49,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
                     + " WHERE created >= now() - '1 day'::interval")
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find post to last day");
+            LOG.error("Don't find post to last day", e);
         }
         return list;
     }
@@ -68,7 +68,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
                     + "WHERE p.photo = true ", Post.class)
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find post with foto");
+            LOG.error("Don't find post with foto", e);
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
                     .setParameter("id", id)
                     .uniqueResult());
         } catch (Exception e) {
-            LOG.error("Don't find Post");
+            LOG.error("Don't find Post", e);
         }
         return post;
     }
@@ -94,7 +94,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
                     .setParameter("email", email)
                     .uniqueResult());
         } catch (Exception e) {
-            LOG.error("Don't find email");
+            LOG.error("Don't find email", e);
         }
         return user;
     }
@@ -116,7 +116,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
             list = et(session -> session.createQuery("from model.Brand")
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find All Brand");
+            LOG.error("Don't find All Brand", e);
         }
         return list;
     }
@@ -127,7 +127,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
             list = et(session -> session.createQuery("from model.Body")
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find All Body");
+            LOG.error("Don't find All Body", e);
         }
         return list;
     }
@@ -138,7 +138,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
             list = et(session -> session.createQuery("from model.Post")
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find All Post");
+            LOG.error("Don't find All Post", e);
         }
         return list;
     }
@@ -158,7 +158,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
                     .setParameter("brand", brand)
                     .list());
         } catch (Exception e) {
-            LOG.error("Don't find post with brand");
+            LOG.error("Don't find post with brand", e);
         }
         return list;
     }

@@ -1,5 +1,6 @@
 package servlet;
 
+import config.Config;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -17,8 +18,9 @@ public class DownloadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         String name = String.valueOf(user.getId());
+        File folder =  new File(Config.instOf().getProperty("images"));
         File downloadFile = null;
-        for (File file : new File("c:\\images\\").listFiles()) {
+        for (File file : folder.listFiles()) {
             if (name.equals(file.getName())) {
                 downloadFile = file;
                 break;

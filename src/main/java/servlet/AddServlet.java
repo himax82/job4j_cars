@@ -2,6 +2,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import config.Config;
 import model.Post;
 import model.User;
 import org.hibernate.HibernateException;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -38,7 +40,8 @@ public class AddServlet extends HttpServlet {
         post.setUser(user);
         post.setCreated(Timestamp.valueOf(LocalDateTime.now()));
         post.setSale(false);
-        for (File file : new File("c:\\images\\").listFiles()) {
+        File folder =  new File(Config.instOf().getProperty("images"));
+        for (File file : folder.listFiles()) {
             if (String.valueOf(user.getId()).equals(file.getName())) {
                 post.setPhoto(true);
                 break;

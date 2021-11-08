@@ -1,5 +1,6 @@
 package servlet;
 
+import config.Config;
 import model.User;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -31,7 +32,7 @@ public class UploadServlet extends HttpServlet {
         ServletFileUpload upload = new ServletFileUpload(factory);
         try {
             List<FileItem> items = upload.parseRequest(req);
-            File folder = new File("c:\\images\\");
+            File folder =  new File(Config.instOf().getProperty("images"));
             if (!folder.exists()) {
                 folder.mkdir();
             }
